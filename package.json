@@ -1,0 +1,29 @@
+{
+  "name": "serverless-s3-with-dynamodb-twilio",
+  "version": "1.0.0",
+  "description": "Mini DropBox with file upload notification",
+  "main": "serverless.yml",
+  "dependencies": {
+    "aws-sdk": "^2.213.1",
+    "node-fetch": "^2.1.1",
+    "twilio": "^3.14.0",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeAmar/Mini-DropBox-implementation-with-serverless-dynamodb-s3-lambda-twilio.git"
+  },
+  "keywords": [
+    "serverless"
+  ],
+  "author": "codeamar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codeAmar/Mini-DropBox-implementation-with-serverless-dynamodb-s3-lambda-twilio/issues"
+  },
+  "homepage": "https://github.com/codeAmar/Mini-DropBox-implementation-with-serverless-dynamodb-s3-lambda-twilio#readme"
+}
