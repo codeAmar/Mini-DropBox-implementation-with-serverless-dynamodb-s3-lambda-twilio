@@ -5,6 +5,9 @@ const AWS = require('aws-sdk');
 const fetch = require('node-fetch');
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 const s3 = new AWS.S3();
+const lambda = new AWS.Lambda({
+  region: 'us-east-1'
+})
 let tableName = 'Twilio';
 let bucketName = 'minidropboxtwilio';
 
@@ -42,6 +45,18 @@ module.exports.insertfile = (event, context, callback) => {
             return Promise.reject(new Error(
               'Failed to fetch '));
           }
+          let params2 = {
+            FunctionName: 'serverless-twilio-minidrop-noitifcation-dev-notification',
+            Payload: JSON.stringify({
+              filename: event.key
+            })
+          }
+          lambda.invoke(params2, (err, data) => {
+            if (err) {
+              console.log(err)
+              return
+            }
+          })
         })
       }).promise()
     ))

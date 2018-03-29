@@ -21,16 +21,20 @@ provider:
       Action:
         - s3:*
       Resource: "*"
-
+    - Effect: Allow
+      Action:
+        - lambda:InvokeFunction
+        - lambda:InvokeAsync
+      Resource: "*"
 
 functions:
 
-  # insertfile:
-  #   handler: controller/insert.insertfile
-  #   events:
-  #     - s3:
-  #         bucket: ${self:custom.bucket}
-  #         event: s3:ObjectCreated:Post
+  insertfile:
+    handler: controller/insert.insertfile
+    events:
+      - s3:
+          bucket: ${self:custom.bucket}
+          event: s3:ObjectCreated:Post
 
   notification:
     handler: controller/notification.notification
@@ -39,10 +43,6 @@ functions:
       TOKEN: ${file(./env.yml):dev.TOKEN}
       TONUMBER: ${file(./env.yml):dev.TONUMBER}
       FROMNUMBER: ${file(./env.yml):dev.FROMNUMBER}
-    events:
-      - s3:
-          bucket: ${self:custom.bucket}
-          event: s3:ObjectCreated:*
 
   deletefile:
     handler: controller/delete.deletefile
