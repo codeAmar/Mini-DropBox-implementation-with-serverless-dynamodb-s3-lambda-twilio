@@ -25,4 +25,14 @@ Moreover, it notifies send SMS to user if an file is added to his bucket.
 
 
 #### Usage
-- Open your S3 bucket named `minidropboxtwilio` and upload a file into it. This will create an event on S3 bucket and you will recieve a message on your cellphone, describing about the file added.
+- Command to insert a file into s3 and sms notification
+  
+```
+sudo serverless invoke --function insertfile --log --data=' { "fileurl" : "http://www.ohchr.org/EN/UDHR/Documents/UDHR_Translations/eng.pdf", "key" : "document8.pdf" } '
+  
+```
+- Command to delete file from s3
+
+```
+sudo serverless invoke --function deletefile --log --data=' { "key" : "document8.pdf" } '
+```
